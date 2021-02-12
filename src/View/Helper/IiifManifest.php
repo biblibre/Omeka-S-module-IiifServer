@@ -555,7 +555,7 @@ class IiifManifest extends AbstractHelper
         $publicResourceUrl = $this->view->plugin('publicResourceUrl');
         foreach ($values as $propertyData) {
             $valueMetadata = [];
-            $valueMetadata['label'] = $propertyData['alternate_label'] ?: $propertyData['property']->label();
+            $valueMetadata['label'] = $propertyData['alternate_label'] ?: $this->view->translate($propertyData['property']->label());
             $valueValues = array_filter(array_map(function ($v) use ($publicResourceUrl) {
                 return $v->type() === 'resource'
                     ? $publicResourceUrl($v->valueResource(), true)
@@ -579,7 +579,7 @@ class IiifManifest extends AbstractHelper
         $publicResourceUrl = $this->view->plugin('publicResourceUrl');
         foreach ($values as $propertyData) {
             $valueMetadata = [];
-            $valueMetadata['label'] = $propertyData['alternate_label'] ?: $propertyData['property']->label();
+            $valueMetadata['label'] = $propertyData['alternate_label'] ?: $this->view->translate($propertyData['property']->label());
             $valueValues = array_filter(array_map(function ($v) use ($publicResourceUrl) {
                 if ($v->type() === 'resource') {
                     $r = $v->valueResource();
